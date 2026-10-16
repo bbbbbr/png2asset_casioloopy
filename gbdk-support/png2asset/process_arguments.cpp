@@ -151,6 +151,7 @@ void showHelp(void) {
 
         printf("-tiles_only         export tile data only\n");
         printf("-maps_only          export map tilemap only\n");
+        printf("-palettes_only      export palettes only\n");
         printf("-metasprites_only   export metasprite descriptors only\n");
         printf("-source_tileset     use source tileset (image with common tiles)\n");
         printf("-entity_tileset     (maps only) mark matching tiles counting from 255 down, entity patterns not exported\n");
@@ -340,6 +341,11 @@ static int processArguments(int startIndex, int argc, const char* argv[], PNG2As
         }
         else if(!strcmp(argv[i], "-tiles_only"))
         {
+            args->includedMapOrMetaspriteData = false;
+        }
+        else if(!strcmp(argv[i], "-palettes_only"))
+        {
+            args->includeTileData = false;
             args->includedMapOrMetaspriteData = false;
         }
         else if(!strcmp(argv[i], "-keep_duplicate_tiles"))
